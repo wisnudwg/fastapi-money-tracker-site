@@ -1,9 +1,21 @@
 from typing import Union
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
+origins = [
+  "*",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 def read_root():
@@ -24,9 +36,13 @@ async def get_top_blogs():
 
 @app.get("/blog/{id}")
 async def get_blog_by_id(id: int):
-  return {
-    "id": id,
-    "title": f"Article {id}",
-    "meta": f"metadata of article {id}",
-    "body": f"Body of article {id}",
-  }
+  if id < 10:
+    return {
+      "id": id,
+      "title": f"Article {id}",
+      "meta": f"metadata of article {id}",
+      "body": f"Body of article {id}",
+    }
+  else:
+    raise HTTPException(status_code=404, detail="article not found")
+    
