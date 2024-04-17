@@ -39,7 +39,7 @@ async def get_blog_by_id(id: int):
 #   return blogs
 # 
 # #POST request method
-# @router.post("")
+# @router.post("/add")
 # async def post_blog(blog: Blog):
 #   collection_name.insert_one(dict(blog))
 # 
