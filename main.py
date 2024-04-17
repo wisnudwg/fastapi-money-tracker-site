@@ -7,9 +7,13 @@ app = FastAPI()
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+  return {"message": "connected"}
 
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
+@app.get("/blog/{id}")
+async def get_blog_by_id(id: int):
+  return {
+    "id": id,
+    "title": f"Article {id}",
+    "meta": f"metadata of article {id}",
+    "body": f"Body of article {id}",
+  }
