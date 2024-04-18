@@ -3,4 +3,4 @@ import os
 
 load_dotenv()
 
-MONGO_URI = os.getenv('MONGO_URI')
+CLIENT_URI = os.getenv("CLIENT_URI")

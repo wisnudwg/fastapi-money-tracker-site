@@ -1,8 +1,8 @@
 from pymongo import MongoClient
 import src.config as config
-print(config.MONGO_URI)
-client = MongoClient(config.MONGO_URI)
+print(config.CLIENT_URI)
+client = MongoClient(config.CLIENT_URI)
 
-db = client.money_tracker_site_db
+db = client.fastapi_money_tracker_site_db
 
 collection_name = db["blog_collection"]
