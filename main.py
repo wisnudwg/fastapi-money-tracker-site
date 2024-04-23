@@ -4,7 +4,7 @@ import uvicorn
 
 load_dotenv()
 
-PORT = int(os.get('PORT', 8000))
+PORT = int(os.getenv('PORT', 8000))
 HOST = '0.0.0.0'
 
 if __name__ == '__main__':
